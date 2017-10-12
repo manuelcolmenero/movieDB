@@ -9,36 +9,45 @@
 import Foundation
 
 final class DetailAssembly {
-	private let imageLoadingAssembly: ImageLoadingAssembly
+    private let imageLoadingAssembly: ImageLoadingAssembly
     private let navigationController: UINavigationController
-
-    // Se inyecta la dependencia del NavigationController
-	init(imageLoadingAssembly: ImageLoadingAssembly,
-         navigationController: UINavigationController) {
-		self.imageLoadingAssembly = imageLoadingAssembly
-        self.navigationController = navigationController
-	}
-
-	func detailHeaderPresenter() -> DetailHeaderPresenter {
-		return DetailHeaderPresenter(imageRepository: imageLoadingAssembly.imageRepository)
-	}
-
-	func posterStripPresenter() -> PosterStripPresenter {
-		return PosterStripPresenter(imageRepository: imageLoadingAssembly.imageRepository)
-	}
+    private let webServiceAssembly: WebServiceAssembly
     
-    //
+    init(imageLoadingAssembly: ImageLoadingAssembly,
+         navigationController: UINavigationController,
+         webServiceAssembly: WebServiceAssembly) {
+        self.imageLoadingAssembly = imageLoadingAssembly
+        self.navigationController = navigationController
+        self.webServiceAssembly = webServiceAssembly
+    }
+    
+    func detailHeaderPresenter() -> DetailHeaderPresenter {
+        return DetailHeaderPresenter(imageRepository: imageLoadingAssembly.imageRepository)
+    }
+    
+    func posterStripPresenter() -> PosterStripPresenter {
+        return PosterStripPresenter(imageRepository: imageLoadingAssembly.imageRepository)
+    }
+    
     func detailNavigator() -> DetailNavigator {
         return PhoneDetailNavigator(navigationController: navigationController,
                                     viewControllerProvider: self)
     }
+    
+    func moviePresenter(identifier: Int64) -> DetailPresenter {
+        return MoviePresenter(repository: movieRepository(),
+                              dateFormatter: webServiceAssembly.dateFormatter,
+                              identifier: identifier)
+    }
+    
+    func movieRepository() -> MovieRepositoryProtocol {
+        return MovieRepository(webService: webServiceAssembly.webService)
+    }
 }
 
-
 extension DetailAssembly: DetailViewControllerProvider {
-
-    // FIXME: Temporary!
-    private class DummyDetailPresenter: DetailPresenter{
+    // FIXME: Temporary!!
+    private class DummyDetailPresenter: DetailPresenter {
         var view: DetailView?
         
         func didLoad() {}
@@ -46,9 +55,18 @@ extension DetailAssembly: DetailViewControllerProvider {
     }
     
     func detailViewController(identifier: Int64, mediaType: MediaType) -> UIViewController {
-        // DetailPresenter es un protocolo comun a todos los modelos
-        return DetailViewController(presenter: DummyDetailPresenter(),
+        
+        let presenter: DetailPresenter
+        
+        switch mediaType {
+        case .movie:
+            presenter = moviePresenter(identifier: identifier)
+        default:
+            presenter = DummyDetailPresenter()
+        }
+        return DetailViewController(presenter: presenter,
                                     headerPresenter: detailHeaderPresenter(),
                                     posterStripPresenter: posterStripPresenter())
     }
 }
+
