@@ -23,17 +23,17 @@ protocol FeaturedView: class {
 
 final class FeaturedPresenter {
     // Se crea una dependencia a Detail para poder navegar
-    private let detailNavigator: DetailNavigator
-    private let repository: FeaturedRepositoryProtocol
-    private let disposeBag = DisposeBag()
+    private let detailNavigator : DetailNavigator
+    private let repository      : FeaturedRepositoryProtocol
+    private let disposeBag      = DisposeBag()
     
     weak var view: FeaturedView?
 
     // Se inyecta la dependencia por constructor
     init(detailNavigator: DetailNavigator,
          repository: FeaturedRepositoryProtocol) {
-        self.detailNavigator = detailNavigator
-        self.repository = repository
+        self.detailNavigator  = detailNavigator
+        self.repository       = repository
     }
     
 	func didLoad() {
@@ -62,6 +62,7 @@ private extension FeaturedPresenter {
     func loadContents() {
         let showsOnTheAir = repository.showsOnTheAir()
             .map { $0.prefix(3) }
+        
         let moviesNowPlaying = repository.moviesNowPlaying(region: Locale.current.regionCode!)
             .map { $0.prefix(3) }
         

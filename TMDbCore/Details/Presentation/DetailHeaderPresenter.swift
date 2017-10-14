@@ -20,7 +20,7 @@ final class DetailHeaderPresenter {
 		bindBackdrop(at: header.backdropPath, to: view)
 		bindPoster(at: header.posterPath, to: view)
 
-		view.titleLabel.text = header.title.uppercased()
+		view.titleLabel.text   = header.title.uppercased()
 		view.metadataLabel.text = header.metadata
 	}
 }

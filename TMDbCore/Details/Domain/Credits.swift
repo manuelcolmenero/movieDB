@@ -10,16 +10,16 @@ import Foundation
 
 struct Credits: Decodable {
     struct CastMember: Decodable {
-        let character: String
-        let identifier: Int64
-        let name: String
-        let profilePath: String?
+        let character    : String
+        let identifier   : Int64
+        let name         : String
+        let profilePath  : String?
         
         private enum CodingKeys: String, CodingKey {
             case character
-            case identifier = "id"
+            case identifier   = "id"
             case name
-            case profilePath = "profile_path"
+            case profilePath  = "profile_path"
         }
     }
     

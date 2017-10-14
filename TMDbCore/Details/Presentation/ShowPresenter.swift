@@ -9,20 +9,20 @@
 import RxSwift
 
 final class ShowPresenter: DetailPresenter {
-    private let repository: ShowRepositoryProtocol
-    private let dateFormatter: DateFormatter
+    private let repository    : ShowRepositoryProtocol
+    private let dateFormatter : DateFormatter
     
-    private let identifier: Int64
-    private let disposeBag = DisposeBag()
+    private let identifier    : Int64
+    private let disposeBag    = DisposeBag()
     
     weak var view: DetailView?
     
     init(repository: ShowRepositoryProtocol,
          dateFormatter: DateFormatter,
          identifier: Int64) {
-        self.repository = repository
+        self.repository    = repository
         self.dateFormatter = dateFormatter
-        self.identifier = identifier
+        self.identifier    = identifier
     }
     
     func didLoad() {

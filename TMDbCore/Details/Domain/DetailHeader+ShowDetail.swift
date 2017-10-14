@@ -10,14 +10,14 @@ import Foundation
 
 extension DetailHeader {
     init(show: ShowDetail, dateFormatter: DateFormatter) {
-        title = show.title
-        posterPath = show.posterPath
-        backdropPath = show.backdropPath
+        title         = show.title
+        posterPath    = show.posterPath
+        backdropPath  = show.backdropPath
         
         let releaseDate = show.releaseDate.flatMap { dateFormatter.date(from: $0)}
         let year = (releaseDate?.year).map { String($0) }
-        let duration = "\(show.runtime) min."
-        
-        metadata = [year, duration].flatMap { $0 }.joined(separator: " - ")
+        let numberSeason = "\(show.numberSeason) seasons."
+
+        metadata = [year, numberSeason].flatMap { $0 }.joined(separator: " - ")
     }
 }
