@@ -9,60 +9,79 @@
 import Foundation
 
 internal enum Endpoint {
-	case configuration
+    case configuration
     case moviesNowPlaying(region: String, page: Int)
     case showsOnTheAir(page: Int)
+    case searchResults(query: String, page: Int)
+    case movie(identifier: Int64)
+    case show(identifier: Int64)
+    
 }
 
 internal extension Endpoint {
-	func request(with baseURL: URL, adding parameters: [String: String]) -> URLRequest {
-		let url = baseURL.appendingPathComponent(path)
-
-		var newParameters = self.parameters
-		parameters.forEach { newParameters.updateValue($1, forKey: $0) }
-
-		var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-		components.queryItems = newParameters.map(URLQueryItem.init)
-
-		var request = URLRequest(url: components.url!)
-		request.httpMethod = method.rawValue
-
-		return request
-	}
+    func request(with baseURL: URL, adding parameters: [String: String]) -> URLRequest {
+        let url = baseURL.appendingPathComponent(path)
+        
+        var newParameters = self.parameters
+        parameters.forEach { newParameters.updateValue($1, forKey: $0) }
+        
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        components.queryItems = newParameters.map(URLQueryItem.init)
+        
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = method.rawValue
+        
+        return request
+    }
 }
 
 // Enum para poder poner los verbos que se usen en el web Services
 
 private enum HTTPMethod: String {
-	case get = "GET"
+    case get = "GET"
 }
 
 private extension Endpoint {
-	var method: HTTPMethod {
-		return .get
-	}
-
-	var path: String {
-		switch self {
-		case .configuration:
-			return "configuration"
+    var method: HTTPMethod {
+        return .get
+    }
+    
+    var path: String {
+        switch self {
+        case .configuration:
+            return "configuration"
         case .moviesNowPlaying:
             return "movie/now_playing"
         case .showsOnTheAir:
             return "tv/on_the_air"
+        case .searchResults:
+            return "search/multi"
+        case .movie(let identifier):
+            return "movie/\(identifier)"
+        case .show(let identifier):
+                return "tv/\(identifier)"
         }
-	}
-	var parameters: [String: String] {
+    }
+    var parameters: [String: String] {
         switch self {
         case .configuration:
             return [:]
         case .moviesNowPlaying(let region, let page):
             return [
                 "region": region,
-                "page"  : String(page)
+                "page": String(page)
             ]
         case .showsOnTheAir(let page):
-            return [ "page"  : String(page) ]
+            return [ "page": String(page) ]
+        case .searchResults(let query, let page):
+            return [
+                "query": query,
+                "page": String(page)
+            ]
+        case .movie:
+            return [ "append_to_response": "credits" ]
+        case .show:
+            return [ "append_to_response": "credits" ]
         }
-	}
+    }
 }
