@@ -28,6 +28,10 @@
 		268F621D1F8FC15500542D34 /* SearchResultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F621C1F8FC15500542D34 /* SearchResultsRepository.swift */; };
 		268F621F1F8FC47000542D34 /* ShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F621E1F8FC47000542D34 /* ShowPresenter.swift */; };
 		2696024F1F894299002E008A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2696024E1F894299002E008A /* Page.swift */; };
+		26EA9E741F926B7E0077EC12 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA9E731F926B7E0077EC12 /* PersonDetail.swift */; };
+		26EA9E761F926CB20077EC12 /* DetailHeader+PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA9E751F926CB20077EC12 /* DetailHeader+PersonDetail.swift */; };
+		26EA9E781F926E140077EC12 /* PersonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA9E771F926E140077EC12 /* PersonPresenter.swift */; };
+		26EA9E7A1F926E910077EC12 /* PersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA9E791F926E910077EC12 /* PersonRepository.swift */; };
 		992D27B81F7FFCA600BA79DE /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D27B71F7FFCA600BA79DE /* DetailPresenter.swift */; };
 		992D27BB1F7FFD5E00BA79DE /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D27BA1F7FFD5E00BA79DE /* DetailSection.swift */; };
 		993F1E7A1F7A9AC3004FE33B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F1E791F7A9AC3004FE33B /* Movie.swift */; };
@@ -185,6 +189,10 @@
 		268F621C1F8FC15500542D34 /* SearchResultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsRepository.swift; sourceTree = "<group>"; };
 		268F621E1F8FC47000542D34 /* ShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPresenter.swift; sourceTree = "<group>"; };
 		2696024E1F894299002E008A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		26EA9E731F926B7E0077EC12 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
+		26EA9E751F926CB20077EC12 /* DetailHeader+PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailHeader+PersonDetail.swift"; sourceTree = "<group>"; };
+		26EA9E771F926E140077EC12 /* PersonPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenter.swift; sourceTree = "<group>"; };
+		26EA9E791F926E910077EC12 /* PersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepository.swift; sourceTree = "<group>"; };
 		992D27B71F7FFCA600BA79DE /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		992D27BA1F7FFD5E00BA79DE /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		993F1E791F7A9AC3004FE33B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -335,6 +343,7 @@
 			children = (
 				268F62061F8FB71600542D34 /* ShowRepository.swift */,
 				268F62161F8FBB7200542D34 /* MovieRepository.swift */,
+				26EA9E791F926E910077EC12 /* PersonRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -366,13 +375,15 @@
 		992D27B91F7FFD1F00BA79DE /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				992D27BA1F7FFD5E00BA79DE /* DetailSection.swift */,
 				268F62081F8FB79400542D34 /* Credits.swift */,
-				268F620A1F8FB7B400542D34 /* MovieDetail.swift */,
-				268F620C1F8FB7C700542D34 /* ShowDetail.swift */,
 				268F620E1F8FB7E600542D34 /* DetailHeader+MovieDetail.swift */,
+				26EA9E751F926CB20077EC12 /* DetailHeader+PersonDetail.swift */,
 				268F62101F8FB7F100542D34 /* DetailHeader+ShowDetail.swift */,
+				992D27BA1F7FFD5E00BA79DE /* DetailSection.swift */,
+				268F620A1F8FB7B400542D34 /* MovieDetail.swift */,
+				26EA9E731F926B7E0077EC12 /* PersonDetail.swift */,
 				268F62121F8FB8A500542D34 /* PosterStripItem+CastMember.swift */,
+				268F620C1F8FB7C700542D34 /* ShowDetail.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -595,6 +606,7 @@
 				996EAFE01F8007070060FD98 /* DetailHeaderPresenter.swift */,
 				268F62141F8FB8CC00542D34 /* MoviePresenter.swift */,
 				268F621E1F8FC47000542D34 /* ShowPresenter.swift */,
+				26EA9E771F926E140077EC12 /* PersonPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -930,14 +942,17 @@
 				99CA33E91F7B9E4700F77335 /* FeaturedViewController.swift in Sources */,
 				268F62111F8FB7F100542D34 /* DetailHeader+ShowDetail.swift in Sources */,
 				268F620F1F8FB7E600542D34 /* DetailHeader+MovieDetail.swift in Sources */,
+				26EA9E781F926E140077EC12 /* PersonPresenter.swift in Sources */,
 				99A465311F7CD245007F3B5B /* DetailHeaderView.swift in Sources */,
 				997A44201F7AA4110094E928 /* UITableView+Reusable.swift in Sources */,
 				997A442A1F7AABD10094E928 /* ImageLoadingAssembly.swift in Sources */,
 				997A441E1F7AA4110094E928 /* NibLoadableView.swift in Sources */,
 				268F621F1F8FC47000542D34 /* ShowPresenter.swift in Sources */,
+				26EA9E7A1F926E910077EC12 /* PersonRepository.swift in Sources */,
 				26491A061F88CB52003D9A26 /* DetailNavigator.swift in Sources */,
 				9943B67F1F7BFF0300D46C90 /* FeaturedPresenter.swift in Sources */,
 				997A44261F7AA9930094E928 /* SearchAssembly.swift in Sources */,
+				26EA9E761F926CB20077EC12 /* DetailHeader+PersonDetail.swift in Sources */,
 				998AD7DF1F7FF76800D3A222 /* DetailAssembly.swift in Sources */,
 				99C5C91C1F7B966F0038688F /* FeaturedAssembly.swift in Sources */,
 				993F1E7E1F7A9C79004FE33B /* Media.swift in Sources */,
@@ -952,6 +967,7 @@
 				9989A1271F74F82900D8DCA7 /* CoreAssembly.swift in Sources */,
 				997A441F1F7AA4110094E928 /* ReusableView.swift in Sources */,
 				997A44281F7AAB350094E928 /* WebServiceAssembly.swift in Sources */,
+				26EA9E741F926B7E0077EC12 /* PersonDetail.swift in Sources */,
 				992D27BB1F7FFD5E00BA79DE /* DetailSection.swift in Sources */,
 				2696024F1F894299002E008A /* Page.swift in Sources */,
 				99A4653A1F7CE21C007F3B5B /* PosterStripCell.swift in Sources */,
