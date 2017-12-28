@@ -3,10 +3,8 @@ Aplicación módulo Superpoderes iOS
 
 
 
-Ejercicio 1
+Ejercicio 1 - OK
 Ocultar el scrollview y mostrar un activity indicator mientras se cargan los contenidos de la pantalla de Featured.
-
-OK: ScrollView
 
 Ejercicio 2
 Hacer presenter para person detail
