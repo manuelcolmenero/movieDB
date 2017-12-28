@@ -7,11 +7,13 @@
 //
 
 #if os(iOS) || os(tvOS)
-import UIKit
 
-#if !RX_NO_MODULE
+import UIKit
 import RxSwift
-#endif
+
+extension UITabBar: HasDelegate {
+    public typealias Delegate = UITabBarDelegate
+}
 
 /// For more information take a look at `DelegateProxyType`.
 open class RxTabBarDelegateProxy
@@ -22,15 +24,15 @@ open class RxTabBarDelegateProxy
     /// Typed parent object.
     public weak private(set) var tabBar: UITabBar?
 
-    /// - parameter parentObject: Parent object for delegate proxy.
-    public init(parentObject: ParentObject) {
-        self.tabBar = parentObject
-        super.init(parentObject: parentObject, delegateProxy: RxTabBarDelegateProxy.self)
+    /// - parameter tabBar: Parent object for delegate proxy.
+    public init(tabBar: ParentObject) {
+        self.tabBar = tabBar
+        super.init(parentObject: tabBar, delegateProxy: RxTabBarDelegateProxy.self)
     }
 
     // Register known implementations
     public static func registerKnownImplementations() {
-        self.register { RxTabBarDelegateProxy(parentObject: $0) }
+        self.register { RxTabBarDelegateProxy(tabBar: $0) }
     }
 
     /// For more information take a look at `DelegateProxyType`.

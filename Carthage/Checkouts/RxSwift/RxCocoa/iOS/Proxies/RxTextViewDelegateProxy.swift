@@ -9,9 +9,7 @@
 #if os(iOS) || os(tvOS)
 
 import UIKit
-#if !RX_NO_MODULE
 import RxSwift
-#endif
 
 /// For more information take a look at `DelegateProxyType`.
 open class RxTextViewDelegateProxy
@@ -21,10 +19,10 @@ open class RxTextViewDelegateProxy
     /// Typed parent object.
     public weak private(set) var textView: UITextView?
 
-    /// - parameter parentObject: Parent object for delegate proxy.
-    public init(parentObject: UITextView) {
-        self.textView = parentObject
-        super.init(parentObject: parentObject)
+    /// - parameter textview: Parent object for delegate proxy.
+    public init(textView: UITextView) {
+        self.textView = textView
+        super.init(scrollView: textView)
     }
 
     // MARK: delegate methods
