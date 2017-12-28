@@ -11,6 +11,8 @@
 		26491A081F88CDCD003D9A26 /* PhoneDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26491A071F88CDCD003D9A26 /* PhoneDetailNavigator.swift */; };
 		26491A0B1F88E4DB003D9A26 /* SearchNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26491A0A1F88E4DB003D9A26 /* SearchNavigator.swift */; };
 		26491A0D1F88E62E003D9A26 /* PhoneSearchNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26491A0C1F88E62E003D9A26 /* PhoneSearchNavigator.swift */; };
+		26551DE21FF58BC500A9044A /* TaggedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26551DE11FF58BC500A9044A /* TaggedImages.swift */; };
+		26551DE41FF58DD800A9044A /* CombinedCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26551DE31FF58DD800A9044A /* CombinedCredits.swift */; };
 		265A7D731F881858005F1AA8 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A7D721F881858005F1AA8 /* AppAssembly.swift */; };
 		268F61F91F8FB5A200542D34 /* FeaturePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F61F81F8FB5A200542D34 /* FeaturePresenterTest.swift */; };
 		268F61FD1F8FB62400542D34 /* FeaturedRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F61FB1F8FB62400542D34 /* FeaturedRepositoryMock.swift */; };
@@ -172,6 +174,8 @@
 		26491A071F88CDCD003D9A26 /* PhoneDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneDetailNavigator.swift; sourceTree = "<group>"; };
 		26491A0A1F88E4DB003D9A26 /* SearchNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigator.swift; sourceTree = "<group>"; };
 		26491A0C1F88E62E003D9A26 /* PhoneSearchNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSearchNavigator.swift; sourceTree = "<group>"; };
+		26551DE11FF58BC500A9044A /* TaggedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedImages.swift; sourceTree = "<group>"; };
+		26551DE31FF58DD800A9044A /* CombinedCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedCredits.swift; sourceTree = "<group>"; };
 		265A7D721F881858005F1AA8 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		268F61F81F8FB5A200542D34 /* FeaturePresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturePresenterTest.swift; sourceTree = "<group>"; };
 		268F61FB1F8FB62400542D34 /* FeaturedRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedRepositoryMock.swift; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 				26EA9E731F926B7E0077EC12 /* PersonDetail.swift */,
 				268F62121F8FB8A500542D34 /* PosterStripItem+CastMember.swift */,
 				268F620C1F8FB7C700542D34 /* ShowDetail.swift */,
+				26551DE11FF58BC500A9044A /* TaggedImages.swift */,
+				26551DE31FF58DD800A9044A /* CombinedCredits.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -936,6 +942,7 @@
 				998AD7D81F7FEEF800D3A222 /* MediaType.swift in Sources */,
 				99B9A34A1F74181A004F883E /* Configuration.swift in Sources */,
 				99A4653D1F7CE3B4007F3B5B /* PosterStripView.swift in Sources */,
+				26551DE21FF58BC500A9044A /* TaggedImages.swift in Sources */,
 				993F1E801F7A9E2E004FE33B /* Person.swift in Sources */,
 				26491A081F88CDCD003D9A26 /* PhoneDetailNavigator.swift in Sources */,
 				99C5C91A1F7B92D00038688F /* Genre.swift in Sources */,
@@ -967,6 +974,7 @@
 				9989A1271F74F82900D8DCA7 /* CoreAssembly.swift in Sources */,
 				997A441F1F7AA4110094E928 /* ReusableView.swift in Sources */,
 				997A44281F7AAB350094E928 /* WebServiceAssembly.swift in Sources */,
+				26551DE41FF58DD800A9044A /* CombinedCredits.swift in Sources */,
 				26EA9E741F926B7E0077EC12 /* PersonDetail.swift in Sources */,
 				992D27BB1F7FFD5E00BA79DE /* DetailSection.swift in Sources */,
 				2696024F1F894299002E008A /* Page.swift in Sources */,
