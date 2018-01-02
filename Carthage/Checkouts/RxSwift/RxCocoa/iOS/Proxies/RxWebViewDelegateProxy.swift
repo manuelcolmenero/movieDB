@@ -7,11 +7,13 @@
 //
 
 #if os(iOS)
-import UIKit
 
-#if !RX_NO_MODULE
+import UIKit
 import RxSwift
-#endif
+
+extension UIWebView: HasDelegate {
+    public typealias Delegate = UIWebViewDelegate
+}
 
 open class RxWebViewDelegateProxy
     : DelegateProxy<UIWebView, UIWebViewDelegate>
@@ -21,25 +23,15 @@ open class RxWebViewDelegateProxy
     /// Typed parent object.
     public weak private(set) var webView: UIWebView?
 
-    /// - parameter parentObject: Parent object for delegate proxy.
-    public init(parentObject: ParentObject) {
-        self.webView = parentObject
-        super.init(parentObject: parentObject, delegateProxy: RxWebViewDelegateProxy.self)
+    /// - parameter webView: Parent object for delegate proxy.
+    public init(webView: ParentObject) {
+        self.webView = webView
+        super.init(parentObject: webView, delegateProxy: RxWebViewDelegateProxy.self)
     }
 
     // Register known implementations
     public static func registerKnownImplementations() {
-        self.register { RxWebViewDelegateProxy(parentObject: $0) }
-    }
-
-    /// For more information take a look at `DelegateProxyType`.
-    open class func setCurrentDelegate(_ delegate: UIWebViewDelegate?, to object: UIWebView) {
-        object.delegate = delegate
-    }
-
-    /// For more information take a look at `DelegateProxyType`.
-    open class func currentDelegate(for object: UIWebView) -> UIWebViewDelegate? {
-        return object.delegate
+        self.register { RxWebViewDelegateProxy(webView: $0) }
     }
 }
 

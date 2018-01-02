@@ -19,7 +19,14 @@ class FeaturedViewController: UIViewController {
 	@IBOutlet private var moviesLabel: UILabel!
 	@IBOutlet private var moviesStackView: UIStackView!
 
-	// MARK: - Properties
+    // Se incluye el scrollView para poderlo ocultar cuando está cargando la pantalla
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    // Se incluye el activityIndicator para cuando carga la pantalla
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    // MARK: - Properties
 
 	private let presenter: FeaturedPresenter
 	private let cardPresenter: CardPresenter
@@ -47,11 +54,22 @@ class FeaturedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Se oculta el scrollView y se activa el activityIndicator
+        self.scrollView.isHidden = true
+        self.activityIndicator.startAnimating()
+        
         // Se instalá el Search en el NavigationController
         searchNavigator.installSearch(viewController: self)
 
         presenter.view = self
 		presenter.didLoad()
+    }
+    
+    // Cuando la pantalla termina de cargar se oculta el activityIndicator y se activa el scrollViiew
+    override func viewDidAppear(_ animated: Bool) {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.scrollView.isHidden = false
     }
 }
 

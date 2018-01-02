@@ -11,9 +11,9 @@ import Foundation
 extension PosterStripItem {
     init(castMember: Credits.CastMember) {
         identifier = castMember.identifier
-        mediaType = .person
-        title = castMember.name
-        metadata = castMember.character
+        mediaType  = .person
+        title      = castMember.name
+        metadata   = castMember.character
         posterPath = castMember.profilePath
     }
 }

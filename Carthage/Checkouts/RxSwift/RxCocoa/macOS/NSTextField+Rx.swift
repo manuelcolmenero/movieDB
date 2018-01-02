@@ -9,9 +9,7 @@
 #if os(macOS)
 
 import Cocoa
-#if !RX_NO_MODULE
 import RxSwift
-#endif
 
 /// Delegate proxy for `NSTextField`.
 ///
@@ -26,14 +24,14 @@ open class RxTextFieldDelegateProxy
 
     /// Initializes `RxTextFieldDelegateProxy`
     ///
-    /// - parameter parentObject: Parent object for delegate proxy.
-    init(parentObject: NSTextField) {
-        self.textField = parentObject
-        super.init(parentObject: parentObject, delegateProxy: RxTextFieldDelegateProxy.self)
+    /// - parameter textField: Parent object for delegate proxy.
+    init(textField: NSTextField) {
+        self.textField = textField
+        super.init(parentObject: textField, delegateProxy: RxTextFieldDelegateProxy.self)
     }
 
     public static func registerKnownImplementations() {
-        self.register { RxTextFieldDelegateProxy(parentObject: $0) }
+        self.register { RxTextFieldDelegateProxy(textField: $0) }
     }
 
     fileprivate let textSubject = PublishSubject<String?>()

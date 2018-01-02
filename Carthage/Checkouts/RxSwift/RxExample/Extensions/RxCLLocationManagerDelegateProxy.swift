@@ -7,34 +7,28 @@
 //
 
 import CoreLocation
-#if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
-#endif
+import RxSwift
+import RxCocoa
+
+extension CLLocationManager: HasDelegate {
+    public typealias Delegate = CLLocationManagerDelegate
+}
 
 public class RxCLLocationManagerDelegateProxy
     : DelegateProxy<CLLocationManager, CLLocationManagerDelegate>
     , DelegateProxyType
     , CLLocationManagerDelegate {
 
-    public init(parentObject: CLLocationManager) {
-        super.init(parentObject: parentObject, delegateProxy: RxCLLocationManagerDelegateProxy.self)
+    public init(locationManager: CLLocationManager) {
+        super.init(parentObject: locationManager, delegateProxy: RxCLLocationManagerDelegateProxy.self)
     }
 
     public static func registerKnownImplementations() {
-        self.register { RxCLLocationManagerDelegateProxy(parentObject: $0) }
+        self.register { RxCLLocationManagerDelegateProxy(locationManager: $0) }
     }
 
     internal lazy var didUpdateLocationsSubject = PublishSubject<[CLLocation]>()
     internal lazy var didFailWithErrorSubject = PublishSubject<Error>()
-
-    public class func currentDelegate(for object: ParentObject) -> CLLocationManagerDelegate? {
-        return object.delegate
-    }
-
-    public class func setCurrentDelegate(_ delegate: CLLocationManagerDelegate?, to object: ParentObject) {
-        object.delegate = delegate
-    }
 
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         _forwardToDelegate?.locationManager?(manager, didUpdateLocations: locations)
