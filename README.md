@@ -44,4 +44,4 @@ Activity Indicator | Listado inicial | Detalle peliculas | Detalle series TV
 
 Detalle actores peliculas | Detalle actores series TV 
 ------------- | -------------
-<img src = "https://github.com/manuelcolmenero/movieDB/blob/master/screenshots/activityIndicator.png" width="250px"> | <img src = "https://github.com/manuelcolmenero/movieDB/blob/master/screenshots/Pantalla02.png" width="250px"> | <img src = "https://github.com/manuelcolmenero/movieDB/blob/master/screenshots/Pantalla03.png" width="250px"> | <img src = "https://github.com/manuelcolmenero/movieDB/blob/master/screenshots/Pantalla04.png" width="250px">
+<img src = "https://github.com/manuelcolmenero/movieDB/blob/master/screenshots/personmovies.png" width="250px"> | <img src = "https://github.com/manuelcolmenero/movieDB/blob/master/screenshots/persontvshows.png" width="250px"> 
